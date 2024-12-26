@@ -1,0 +1,106 @@
+[gd_scene load_steps=6 format=3 uid="uid://cam2b36u278xr"]
+
+[ext_resource type="Texture2D" uid="uid://bwonb27ahvbap" path="res://resources/textures/tree.png" id="1_brfkd"]
+[ext_resource type="Script" uid="uid://btfso0mm2mj6u" path="res://scripts/sway_controller.gd" id="1_nnvrw"]
+[ext_resource type="Script" uid="uid://cvnoe01qbfxo8" path="res://scripts/manual_interpolation_bone.gd" id="3_qd6xs"]
+[ext_resource type="PackedScene" uid="uid://cux6biu35tkew" path="res://scenes/apple.tscn" id="3_viusy"]
+
+[sub_resource type="Theme" id="Theme_qd6xs"]
+
+[node name="scene" type="Node2D"]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(0, 32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_brfkd")
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(0, 0, 1536, 0, 1536, 1536, 0, 1536, 210.489, 179.2, 120.889, 430.933, 234.667, 644.266, 679.823, 608.711, 705.423, 770.844, 708.267, 1011.2, 689.778, 1180.44, 156.445, 1207.47, 975.645, 1164.8, 1366.76, 1186.13, 941.512, 1001.24, 928.711, 759.466, 903.112, 591.644, 1099.38, 605.866, 483.556, 644.266, 1342.58, 604.444, 1436.44, 385.422, 1348.27, 133.688, 1107.91, 21.3329, 789.334, 15.644, 499.2, 22.7551, 335.645, 71.1107, 822.045, 1530.31)
+uv = PackedVector2Array(0, 0, 1536, 0, 1536, 1536, 0, 1536, 210.489, 179.2, 120.889, 430.933, 234.667, 644.266, 679.823, 608.711, 705.423, 770.844, 708.267, 1011.2, 689.778, 1180.44, 156.445, 1207.47, 975.645, 1164.8, 1366.76, 1186.13, 941.512, 1001.24, 928.711, 759.466, 903.112, 591.644, 1099.38, 605.866, 483.556, 644.266, 1342.58, 604.444, 1436.44, 385.422, 1348.27, 133.688, 1107.91, 21.3329, 789.334, 15.644, 499.2, 22.7551, 335.645, 71.1107, 822.045, 1530.31)
+polygons = [PackedInt32Array(4, 6, 5), PackedInt32Array(4, 25, 6), PackedInt32Array(6, 18, 25), PackedInt32Array(18, 24, 25), PackedInt32Array(18, 7, 24), PackedInt32Array(24, 23, 7), PackedInt32Array(7, 16, 23), PackedInt32Array(23, 22, 16), PackedInt32Array(22, 17, 16), PackedInt32Array(21, 22, 17), PackedInt32Array(20, 17, 21), PackedInt32Array(20, 19, 17), PackedInt32Array(16, 8, 7), PackedInt32Array(16, 15, 8), PackedInt32Array(8, 9, 15), PackedInt32Array(15, 14, 9), PackedInt32Array(10, 9, 14), PackedInt32Array(10, 12, 14), PackedInt32Array(12, 13, 2), PackedInt32Array(10, 11, 3), PackedInt32Array(10, 26, 3), PackedInt32Array(12, 26, 10), PackedInt32Array(12, 2, 26), PackedInt32Array(22, 1, 21), PackedInt32Array(23, 1, 22), PackedInt32Array(23, 0, 24), PackedInt32Array(1, 0, 23), PackedInt32Array(25, 0, 24), PackedInt32Array(4, 25, 0), PackedInt32Array(5, 0, 4), PackedInt32Array(18, 8, 7), PackedInt32Array(9, 10, 11), PackedInt32Array(8, 11, 9), PackedInt32Array(18, 11, 8), PackedInt32Array(6, 11, 18), PackedInt32Array(6, 3, 11), PackedInt32Array(5, 3, 6), PackedInt32Array(0, 3, 5), PackedInt32Array(17, 15, 16), PackedInt32Array(14, 13, 12), PackedInt32Array(15, 13, 14), PackedInt32Array(17, 13, 15), PackedInt32Array(17, 19, 13), PackedInt32Array(19, 2, 13), PackedInt32Array(2, 20, 19), PackedInt32Array(1, 20, 21), PackedInt32Array(1, 2, 20)]
+bones = ["root", PackedFloat32Array(1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0.5, 1, 0.5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1), "root/trunk_a", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 1, 0, 1, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/trunk_a/trunk_b", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 1, 1, 0.5, 0, 0, 0, 0, 0.5, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "root/trunk_a/trunk_b/trunk_c", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 0, 0.5, 1, 0.5, 0, 0), "root/trunk_a/trunk_b/trunk_c/leaves_left", PackedFloat32Array(0, 0, 0, 0, 1, 1, 1, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0.5, 1, 0), "root/trunk_a/trunk_b/trunk_c/leaves_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 1, 0, 1, 1, 1, 0.5, 0, 0, 0, 0)]
+internal_vertex_count = 23
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+position = Vector2(0, 32)
+scale = Vector2(0.5, 0.5)
+
+[node name="root" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(781, 1311)
+rest = Transform2D(1, 0, 0, 1, 781, 1311)
+script = ExtResource("3_qd6xs")
+metadata/_custom_type_script = ExtResource("3_qd6xs")
+
+[node name="trunk_a" type="Bone2D" parent="Skeleton2D/root"]
+position = Vector2(53, -312)
+rest = Transform2D(1, 0, 0, 1, 53, -312)
+script = ExtResource("3_qd6xs")
+metadata/_custom_type_script = ExtResource("3_qd6xs")
+
+[node name="trunk_b" type="Bone2D" parent="Skeleton2D/root/trunk_a"]
+position = Vector2(-39, -440)
+rest = Transform2D(1, 0, 0, 1, -39, -440)
+script = ExtResource("3_qd6xs")
+metadata/_custom_type_script = ExtResource("3_qd6xs")
+
+[node name="trunk_c" type="Bone2D" parent="Skeleton2D/root/trunk_a/trunk_b"]
+position = Vector2(-8, -242)
+rest = Transform2D(1, 0, 0, 1, -8, -242)
+script = ExtResource("3_qd6xs")
+metadata/_custom_type_script = ExtResource("3_qd6xs")
+
+[node name="leaves_left" type="Bone2D" parent="Skeleton2D/root/trunk_a/trunk_b/trunk_c"]
+position = Vector2(-368, 33)
+rest = Transform2D(1, 0, 0, 1, -368, 33)
+script = ExtResource("3_qd6xs")
+metadata/_custom_type_script = ExtResource("3_qd6xs")
+
+[node name="Apple" parent="Skeleton2D/root/trunk_a/trunk_b/trunk_c/leaves_left" instance=ExtResource("3_viusy")]
+
+[node name="leaves_right" type="Bone2D" parent="Skeleton2D/root/trunk_a/trunk_b/trunk_c"]
+position = Vector2(322, 12)
+rest = Transform2D(1, 0, 0, 1, 322, 12)
+script = ExtResource("3_qd6xs")
+metadata/_custom_type_script = ExtResource("3_qd6xs")
+
+[node name="Apple2" parent="Skeleton2D/root/trunk_a/trunk_b/trunk_c/leaves_right" instance=ExtResource("3_viusy")]
+
+[node name="sway_controller" type="Node2D" parent="." node_paths=PackedStringArray("debug_label", "bones")]
+script = ExtResource("1_nnvrw")
+debug_label = NodePath("../ui_container/Control/debug_label")
+bones = [NodePath("../Skeleton2D/root/trunk_a"), NodePath("../Skeleton2D/root/trunk_a/trunk_b"), NodePath("../Skeleton2D/root/trunk_a/trunk_b/trunk_c"), NodePath("../Skeleton2D/root/trunk_a/trunk_b/trunk_c/leaves_left"), NodePath("../Skeleton2D/root/trunk_a/trunk_b/trunk_c/leaves_right")]
+sway_speed = 5.0
+sway_amount = 250.0
+
+[node name="ui_container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 768.0
+offset_bottom = 768.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="PanelContainer" parent="ui_container"]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 103.0
+offset_bottom = 55.0
+theme = SubResource("Theme_qd6xs")
+
+[node name="debug_label" type="Label" parent="ui_container/Control"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 0
+text = "placeholder
+text"
+
+[node name="Button" type="Button" parent="ui_container"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -145.0
+offset_bottom = 60.0
+grow_horizontal = 0
+text = "Toggle Manual Interpolation"
+
+[connection signal="pressed" from="ui_container/Button" to="sway_controller" method="_on_button_pressed"]
