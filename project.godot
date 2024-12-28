@@ -21,11 +21,7 @@ window/size/viewport_height=768
 
 [editor]
 
-movie_writer/movie_file="C:/Users/jeremy/Videos/godot/demo_01.avi"
-
-[global_group]
-
-sway_bones=""
+movie_writer/movie_file="C:/Users/jeremy/Videos/godot/demo_01_manual_interpolation.avi"
 
 [physics]
 

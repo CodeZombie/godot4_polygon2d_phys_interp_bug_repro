@@ -1,14 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://cam2b36u278xr"]
+[gd_scene load_steps=6 format=3 uid="uid://cam2b36u278xr"]
 
 [ext_resource type="Texture2D" uid="uid://bwonb27ahvbap" path="res://resources/textures/tree.png" id="1_brfkd"]
 [ext_resource type="Script" uid="uid://btfso0mm2mj6u" path="res://scripts/scene_controller.gd" id="1_nnvrw"]
 [ext_resource type="Script" uid="uid://cvnoe01qbfxo8" path="res://scripts/sway_node.gd" id="3_qd6xs"]
 [ext_resource type="PackedScene" uid="uid://cux6biu35tkew" path="res://scenes/apple.tscn" id="3_viusy"]
-[ext_resource type="Texture2D" uid="uid://trc4eurl6sg7" path="res://resources/textures/godot_bug.png" id="5_ake3r"]
 
 [sub_resource type="Theme" id="Theme_qd6xs"]
 
 [node name="scene" type="Node2D"]
+
+[node name="scene_controller" type="Node2D" parent="." node_paths=PackedStringArray("debug_label")]
+script = ExtResource("1_nnvrw")
+debug_label = NodePath("../ui_container/Control/debug_label")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(0, 32)
@@ -25,7 +28,7 @@ internal_vertex_count = 23
 position = Vector2(0, 32)
 scale = Vector2(0.5, 0.5)
 
-[node name="root" type="Bone2D" parent="Skeleton2D" groups=["sway_bones"]]
+[node name="root" type="Bone2D" parent="Skeleton2D"]
 position = Vector2(781, 1311)
 rest = Transform2D(1, 0, 0, 1, 781, 1311)
 script = ExtResource("3_qd6xs")
@@ -33,52 +36,48 @@ frequency = 0.0
 amplitude = 0.0
 metadata/_custom_type_script = ExtResource("3_qd6xs")
 
-[node name="trunk_a" type="Bone2D" parent="Skeleton2D/root" groups=["sway_bones"]]
+[node name="trunk_a" type="Bone2D" parent="Skeleton2D/root"]
 position = Vector2(-1, -311)
 rest = Transform2D(1, 0, 0, 1, -1, -311)
 script = ExtResource("3_qd6xs")
 frequency = 18.0
 metadata/_custom_type_script = ExtResource("3_qd6xs")
 
-[node name="trunk_b" type="Bone2D" parent="Skeleton2D/root/trunk_a" groups=["sway_bones"]]
+[node name="trunk_b" type="Bone2D" parent="Skeleton2D/root/trunk_a"]
 position = Vector2(4, -429)
 rest = Transform2D(1, 0, 0, 1, 4, -429)
 script = ExtResource("3_qd6xs")
 frequency = 31.0
 metadata/_custom_type_script = ExtResource("3_qd6xs")
 
-[node name="trunk_c" type="Bone2D" parent="Skeleton2D/root/trunk_a/trunk_b" groups=["sway_bones"]]
+[node name="trunk_c" type="Bone2D" parent="Skeleton2D/root/trunk_a/trunk_b"]
 position = Vector2(6, -242)
 rest = Transform2D(1, 0, 0, 1, 6, -242)
 script = ExtResource("3_qd6xs")
 frequency = 24.0
 metadata/_custom_type_script = ExtResource("3_qd6xs")
 
-[node name="leaves_left" type="Bone2D" parent="Skeleton2D/root/trunk_a/trunk_b/trunk_c" groups=["sway_bones"]]
+[node name="leaves_left" type="Bone2D" parent="Skeleton2D/root/trunk_a/trunk_b/trunk_c"]
 position = Vector2(-368, 33)
 rest = Transform2D(1, 0, 0, 1, -368, 33)
 script = ExtResource("3_qd6xs")
 frequency = 16.0
-amplitude = 384.0
 metadata/_custom_type_script = ExtResource("3_qd6xs")
 
 [node name="Apple" parent="Skeleton2D/root/trunk_a/trunk_b/trunk_c/leaves_left" instance=ExtResource("3_viusy")]
+physics_interpolation_mode = 2
 position = Vector2(111, 254)
 
-[node name="leaves_right" type="Bone2D" parent="Skeleton2D/root/trunk_a/trunk_b/trunk_c" groups=["sway_bones"]]
+[node name="leaves_right" type="Bone2D" parent="Skeleton2D/root/trunk_a/trunk_b/trunk_c"]
 position = Vector2(322, 12)
 rest = Transform2D(1, 0, 0, 1, 322, 12)
 script = ExtResource("3_qd6xs")
 frequency = 20.0
-amplitude = 384.0
 metadata/_custom_type_script = ExtResource("3_qd6xs")
 
 [node name="Apple2" parent="Skeleton2D/root/trunk_a/trunk_b/trunk_c/leaves_right" instance=ExtResource("3_viusy")]
+physics_interpolation_mode = 2
 position = Vector2(-63, 245)
-
-[node name="scene_controller" type="Node2D" parent="." node_paths=PackedStringArray("debug_label")]
-script = ExtResource("1_nnvrw")
-debug_label = NodePath("../ui_container/Control/debug_label")
 
 [node name="ui_container" type="Control" parent="."]
 layout_mode = 3
@@ -101,21 +100,3 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 0
 text = "placeholder
 text"
-
-[node name="Button" type="Button" parent="ui_container"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -145.0
-offset_bottom = 60.0
-grow_horizontal = 0
-text = "Toggle Manual Interpolation"
-
-[node name="bug" type="Sprite2D" parent="."]
-position = Vector2(199, 510)
-scale = Vector2(0.313348, 0.313348)
-texture = ExtResource("5_ake3r")
-script = ExtResource("3_qd6xs")
-
-[connection signal="pressed" from="ui_container/Button" to="scene_controller" method="_on_button_pressed"]
